@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+
+var array = [   [1,   2,  3,  4,  5], 
+                [6,   7,  8,  9, 10], 
+                [11, 12, 13, 14, 15], 
+                [16, 17, 18, 19, 20], 
+                [21, 22, 23, 24, 25] ];
+/*
+
+var array = [[1, 2], 
+             [3, 4]];
+
+var array = [ [1, 2, 3, 4],
+             [5, 6, 7, 8],
+             [9, 10, 11, 12],
+             [13, 14, 15, 16] ];
+
+
+
+
+var array= [[3]];
+
+*/
+
+function snail(array) {
+    var output = [];
+
+    if (array.length === 1) {return array[0];}
+    
+    while (array.length > 0) {
+        //top
+        if (array.length !== 0) {output.push(array.shift());}
+        //right
+        for (i = 0; i < array.length; i++) {
+            output.push(array[i].pop());
+        }
+        //bottom
+        if (array.length !== 0) { output.push(array.pop().reverse());} 
+        //left
+        for (j = (array.length - 1); j >= 0; j--) {
+            output.push(array[j].shift());
+        }
+    }
+    var outputFlat = output.reduce((prev, curr) => prev.concat(curr));
+    return outputFlat;
+}
+
+console.log(snail(array));
+
+
+
+
+
+
+// [1, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 7, 8, 9, 14, 19, 18, 17, 12, 13]
+
+
+
+
+</script>
+</body>
+</html>

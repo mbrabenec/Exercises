@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function permute(arr) {
+
+    var result = [];
+    
+    if (arr.length === 0) return [];
+    if (arr.length === 1) return [arr];
+
+    
+    for (let i = 0; i < arr.length; i++) {
+
+        var holdNum = arr[i];
+        var rest = arr.slice(0, i).concat(arr.slice(i+1));
+        var restPermutated = permute(rest);
+        
+        for (let j = 0; j < restPermutated.length; j++) {
+
+            var permArray = [holdNum].concat(restPermutated[j]);
+            result.push(permArray);
+        }
+    }
+return result;
+}
+
+console.log(permute([1,2,3]))
+
+    </script>
+</body>
+</html>

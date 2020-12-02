@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+
+
+
+
+function findEvenIndex(arr) {
+
+var a = arr.map((value, index) => {
+    
+    var sumBefore = 0;
+    for (i = 0; i < index; i++) {
+        sumBefore += arr[i];
+    }
+    var sumAfter = 0;
+    for (i = (index + 1); i < arr.length; i++) {
+        sumAfter += arr[i];
+    }
+    return (sumBefore - sumAfter);
+});
+return a.indexOf(0);
+}
+
+
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+function mazeRunner(maze, directions) {
+
+var mazeRef = {};
+var pos;
+
+for (i = 0; i < maze.length; i++) {
+    for (j = 0; j < maze.length; j++) {
+    mazeRef[i + '-' + j] = maze[i][j];
+        if (maze[i][j] === 2) {pos = i + "-" + j}
+    }
+}
+
+for (move of directions) {
+    pos = nextMove(pos, move)
+    console.log(pos);
+    console.log(mazeRef[pos]);
+    if (mazeRef[pos] === undefined) {return "Dead";}
+    else if (mazeRef[pos] === 1) {return "Dead";}
+    else if (mazeRef[pos] === 3) {return "Finish";}
+}
+return "Lost";
+}
+
+function nextMove(pos, move) {
+    var posSplit = pos.split("-");
+    switch(move) {
+        case 'N':
+            posSplit[0]--;
+            break;
+        case 'S':
+            posSplit[0]++;
+            break;
+        case 'W':
+            posSplit[1]--;
+            break;
+        case 'E':
+            posSplit[1]++;
+            break;
+    }
+return posSplit[0] + "-" + posSplit[1];
+}
+
+
+
+
+
+var maze = [[1,1,1,1,1,1,1],
+        [1,0,0,0,0,0,3],
+        [1,0,1,0,1,0,1],
+        [0,0,1,0,0,0,1],
+        [1,0,1,0,1,0,1],
+        [1,0,0,0,0,0,1],
+        [1,2,1,0,1,0,1]]
+
+var directions = ["N","N","N","N","N","E","E","E","E","E"];
+
+
+
+
+// could re-do with just array [i][j] and not bother with creating object.
+
+
+
+    </script>
+
+</body> 
+</html>

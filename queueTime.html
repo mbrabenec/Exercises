@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+function queueTime(customers, n) {
+
+var queue = customers
+var tillNumber = n;
+
+// populate each till element in array with 0
+var tills = new Array(n).fill(0); 
+
+//send customers to shortest till line at tills
+while (queue.length > 0) {
+var shorterLinelength = tills.reduce((a, b) => Math.min(a, b));
+var shorterLineindex = tills.indexOf(shorterLinelength);
+tills[shorterLineindex] += queue.shift();
+}
+var result = tills.reduce((a, b) => Math.max(a, b));
+return result;
+}
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+
+
+pickPeaks([1,1,1,1]);
+
+function pickPeaks(arr){
+    let results = { pos: [],
+                    peaks: []}
+    let arrChanges = new Array(arr.length).fill("n");
+    for (i = 1; i < arr.length; i++) {
+        var change = arr[i] - arr[i-1];
+        if (change === 0) {arrChanges[i] = "L";}
+        else if (change > 0) {arrChanges[i] = "U";}
+        else if (change < 0) {arrChanges[i] = "D";}
+    }
+    let arrString = arrChanges.join("");
+    const regSearch = /(?<=\w)U(?=(L*D+))/g;
+    let regResults;
+    while ((regResults = regSearch.exec(arrString)) !== null) {  
+        results.peaks.push(arr[regResults.index]);
+        results.pos.push(regResults.index);
+    }
+
+    console.log(results)
+    console.log(arrString);
+
+}
+
+
+
+    </script>
+</body>
+</html>

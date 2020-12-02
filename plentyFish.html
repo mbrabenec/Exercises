@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+
+function fish(shoal) {
+    var mySize = 1;
+    var eaten = 0;
+
+    var shoal = shoal.split('').sort();
+
+    for (i = 0; i < shoal.length; i++) {
+        var nextFish = parseInt(shoal[i]);
+        if ( nextFish <= mySize) {
+            eaten = eaten + nextFish;
+            if (eaten >= 144) {mySize = 9;}
+            else if (eaten >= 112) {mySize = 8;}
+            else if (eaten >= 84) {mySize = 7;}
+            else if (eaten >= 60) {mySize = 6;}
+            else if (eaten >= 40) {mySize = 5;}
+            else if (eaten >= 24) {mySize = 4;}
+            else if (eaten >= 12) {mySize = 3;}
+            else if (eaten >= 4) {mySize = 2;}
+        }  
+    }
+    return mySize;
+}
+
+
+var shoal = "1223762697469679788118335094443547657192349864789";
+console.log(fish(shoal));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

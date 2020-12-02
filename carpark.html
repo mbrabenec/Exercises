@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+
+
+
+
+<script>
+
+carpark = [[0, 2, 0, 0, 1],
+           [0, 0, 0, 0, 1],
+           [0, 0, 0, 0, 1],
+           [0, 0, 0, 0, 0]];
+result = ["R3", "D3"];
+
+console.log(escape(carpark));
+
+function escape(carpark) {
+
+    var solution = [];
+    var locationKeymarker;
+    var level;
+    var exitKey;
+
+    for (i = 0; i < carpark.length; i++) {
+        if (carpark[i].indexOf(2) > -1) {
+            level = i;
+            locationKeymarker = carpark[level].indexOf(2);
+        }
+    }
+
+
+    for (j = level; j < (carpark.length - 1); j++) {
+        var thisLevel = carpark[j];
+        exitKey = thisLevel.indexOf(1);
+        var toMove = locationKeymarker - exitKey;
+        
+
+        if (locationKeymarker === exitKey) {
+            if (solution[solution.length - 1].charAt(0) === "D") {
+                var prevDir = solution.pop();
+                var prevDivSplit = prevDir.split("D");
+                var newDownCount = (Number(prevDivSplit[1]) + 1);
+                solution.push("D"+newDownCount);
+
+            } else {
+                solution.push("D1");
+            }
+        } else if (toMove > 0) {
+            solution.push("L"+toMove);
+            solution.push("D1");
+        } else if (toMove < 0) {
+            toMove = Math.abs(toMove);
+            solution.push("R"+toMove);
+            solution.push("D1");
+        
+        }
+        locationKeymarker = exitKey;
+    }
+
+    toMove = locationKeymarker - (carpark[0].length - 1);
+    if (toMove === 0) {
+        //nothing
+    } else {
+        toMove = Math.abs(toMove);
+        solution.push("R"+toMove);
+    }
+    
+return solution;
+}
+
+    </script>
+
+</html>

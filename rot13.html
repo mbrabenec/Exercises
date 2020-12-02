@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+console.log(rot13("abcdefghijklmnopqrstuvwxyz"));
+
+function rot13(message) {
+
+    const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+    let textArray = message.split("");
+
+    for (i = 0; i < textArray.length; i++) {
+        if (alphabet.indexOf((textArray[i]).toLocaleLowerCase()) >= 0) {
+            if (textArray[i] === textArray[i].toLocaleLowerCase()) {
+                textArray[i] = encr(textArray[i])
+            } else {
+                var newValue = encr(textArray[i])
+                textArray[i] = newValue.toLocaleUpperCase();
+            }
+        }
+    }
+
+    return textArray.join("");
+
+    function encr(inputVal) {
+        var index = alphabet.indexOf(inputVal.toLocaleLowerCase());
+        index = index + 13;
+        if(index > 25) index = (index - 26);
+        return alphabet[index];
+    }
+
+}
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+let inpStr = "99711a136867a97107a108257a57509a129721a139889a91988a54465a129229a59122a97391a57509a70687a72733a137687a123889a53484a71869a144816a83856a131570a68905a66648a124392a59964a80553a93881a56253a76282a127377a110425a59914a76294a81888a88986a132544a70423a124018a122121a53231a148042a108810a75092a60185a94065a130221a121319a87502a90029a86186a113956a143744a133441a142914a112218a66629a144965a135476a111537a51709a125198a72098a79625a105068a119597a71611a122186a95752a51967a117725a52696a100411a70222a66330a119579a116075a91228a68982a114698a125333a139219a148789a101768a97593a100820a75959a128572a99469a102120a76462a128313a123442a83860a76163a142707a66275a70837a137203a71123";
+let inpArr = inpStr.split("a");
+let total = 0;
+
+for (i = 0; i < inpArr.length; i++) {
+    let fuelToAdd = fuelReq(parseInt(inpArr[i]));
+    inpArr[i] = fuelToAdd;
+    total += fuelToAdd;
+}
+
+console.log(inpArr);
+console.log(total);
+
+
+function fuelReq(weight) {
+    let result = 0;
+    let fuelAdd = ((Math.floor((weight)/3))-2);
+    if (fuelAdd >= 0) {
+        result = fuelAdd + fuelReq(fuelAdd);
+    }
+    return result;
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+function getPINs(observed) {
+
+  const allButton = [["0", "8"],              //0
+                    ["1", "2", "4"],          //1
+                    ["2", "1", "3", "5"],     //2
+                    ["3", "2", "6"],          //3
+                    ["4", "1", "5", "7"],     //4
+                    ["5", "2", "4", "6", "8"],//5
+                    ["6", "3", "5", "9"],     //6
+                    ["7", "4", "8"],          //7
+                    ["8", "7", "5", "9", "0"],//8
+                    ["9", "6", "8"]];         //9
+
+  const pinArray = observed.split("").map(a => allButton[a]);
+  return permutePins(pinArray);  
+
+  function permutePins(arr) {
+    let results = [];
+
+    if (arr.length === 1) return arr[0];
+
+    let holdElement = arr.shift();
+    let restToPermute = arr;
+    let restPermuted = permutePins(restToPermute);
+    
+    for (let i = 0; i < holdElement.length; i++) {
+      for (let j = 0; j < restPermuted.length; j++) {
+        results.push(holdElement[i] + restPermuted[j]);
+      }
+    }
+    return results;  
+  }
+}
+
+var a = getPINs("3692563551055");
+console.log(a);
+
+    </script>
+</body>
+</html>

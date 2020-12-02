@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+function pathFinder(maze){ 
+
+    let mazeArr = maze.split("\n").map(v => v.split(""));
+    let stack = [[0, 0]];
+    const length = mazeArr.length;
+
+    while (stack.length > 0) {
+            let currentElement = stack.pop();
+            let i = currentElement[0];
+            let j = currentElement[1];
+
+            if (i < 0 || j < 0 || i >= length || j >= length) continue;
+            if (mazeArr[i][j] !== ".") continue;
+            mazeArr[i][j] = "P";
+            [[i+1,j],
+                [i-1,j],
+                [i,j+1],
+                [i,j-1]].forEach(([i, j]) => stack.push([i, j]));
+    }
+
+return(mazeArr[length -1][length - 1] === "P");
+
+
+/*
+while (stack.length > 0) {
+        let currentElement = stack.pop();
+        let i = currentElement[0];
+        let j = currentElement[1];
+        if (mazeArr[i][j] !== ".") {
+            //do nothing
+        } else {
+            mazeArr[i][j] = "P";
+
+            [[i+1,j],
+            [i-1,j],
+            [i,j+1],
+            [i,j-1]].filter(([i, j]) => i >= 0 && j >= 0 && i < length && j < length ).forEach(([i, j]) => stack.push([i, j]));
+
+        console.log(stack);
+        }
+}
+return (mazeArr.pop().pop() === "P");
+
+*/
+}
+
+
+
+var maze =`.W.
+.W.
+...`;
+
+console.log(pathFinder(maze));
+
+    </script>
+</body>
+</html>

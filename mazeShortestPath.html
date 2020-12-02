@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+var testMaze = 
+`.W.
+.W.
+...`;
+
+function pathFinder(maze) {
+
+let mazeArr = maze.split("\n").map(v => [...v]);
+const size = maze.length;
+const start = [2, 2];
+const end = [size-1, size-1];
+let queue = [];
+
+queue.push(start);
+
+console.log(queue);
+
+while (queue.length) {
+    let path = queue.shift();
+    let position = path[path.length-1];
+    let posX = position[0];
+    let posY = position[1];
+    console.log(position);
+    if(posX === end[0] && posY === end[1]) return path.concat(end);
+
+
+
+}
+
+
+
+
+}
+
+var a = pathFinder(testMaze);
+console.log(a);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+function pathFinder(maze) {
+
+let mazeArr = maze.split("\n").map(v => [...v]);
+const mazeLen = mazeArr.length;
+const start = [0, 0];
+const finish = [mazeLen - 1, mazeLen - 1];
+let queue = [];
+
+mazeArr[start[0]][start[1]] = "X";
+queue.push([start]);     //////
+while (queue.length) {
+
+    let path = queue.shift();
+    let pos = path[path.length - 1];
+
+    let moves =[[pos[0] + 1, pos[1]],
+                [pos[0] - 1, pos[1]],
+                [pos[0], pos[1] + 1],
+                [pos[0], pos[1] - 1]];
+
+    for (i = 0; i < 4; i++) {
+        if (moves[i][0] === finish[0] && moves[i][1] === finish[1]) {
+            return path.concat([finish]);   ///////
+        }
+        else if (moves[i][0] < 0 || 
+                 moves[i][0] >= mazeLen || 
+                 moves[i][1] < 0 || 
+                 moves[i][1] >= mazeLen || 
+                 mazeArr[moves[i]] === "W") continue;
+
+        else {
+            mazeArr[moves[i][0]][moves[i][1]] = "X";
+            queue.push(path.concat([moves[i]])); 
+        }
+    }
+}
+
+
+}
+
+*/
+
+
+
+    </script>
+</body>
+</html>
