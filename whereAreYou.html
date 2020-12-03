@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+path = 'r5L2l4';
+//[4,3]
+
+function IamHere(path){
+
+let l = (path.match(/l\d/) !== null) ? path.match(/l\d/)[0].slice(1) : 0;
+let R = (path.match(/R\d/) !== null) ? path.match(/R\d/)[0].slice(1) : 0;
+let r = (path.match(/r\d/) !== null) ? path.match(/r\d/)[0].slice(1) : 0;
+let L = (path.match(/L\d/) !== null) ? path.match(/L\d/)[0].slice(1) : 0;
+
+return [l-R,r-L];
+}
+
+
+console.log(IamHere(path));
+
+    </script>
+</body>
+</html>
