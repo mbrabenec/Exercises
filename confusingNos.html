@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+const confusingNos = [0,1,6,8,9];
+let inp = 100;
+
+function howMany(inp) {
+
+let fullArr = [];
+let outputArr = [];
+
+
+    for (let i = 1; i <= inp; i++) {
+
+        let nStr = i.toString().split("");
+
+
+        if ((nStr.indexOf('2') === -1) && (nStr.indexOf('3') === -1) && (nStr.indexOf('4') === -1) && (nStr.indexOf('5') === -1) && (nStr.indexOf('7') === -1)) {
+
+            for (let j = 0; j < nStr.length; j++) {
+                
+                if (nStr[j] === '6') {
+                    nStr[j] = '9';
+                } else if (nStr[j] === '9') {
+                    nStr[j] = '6';
+                }
+            }
+
+            let flippedNum = nStr.reverse().reduce((a,b) => a+b);
+
+            if (flippedNum != i) outputArr.push(parseInt(i));
+
+           
+        }
+
+
+
+
+
+
+
+    }       
+
+
+
+
+
+
+
+    console.log(outputArr);
+
+
+
+}
+
+howMany(inp);
+
+/*
+        for (let j = 0; j < numStr.length; j++) {
+
+            let toCheck = numStr[j];
+            
+            if (toCheck == 0) flippedStr.push(0);
+            if (toCheck == 1) flippedStr.push(1);
+            if (toCheck == 6) flippedStr.push(9);
+            if (toCheck == 8) flippedStr.push(8);
+            if (toCheck == 9) flippedStr.push(6);
+            else flag = false;
+
+        }
+
+        let flippedNum = flippedStr.reduce((a,b) => a + parseInt(b), 0);
+        if (flag) console.log(flippedNum);
+        
+
+        if (((flippedStr.join('').length === numStr.length) && (flag) && flippedNum !== i)) {
+            
+            outputArr.push(flippedNum);
+        }
+    }
+
+console.log(outputArr);
+console.log(outputArr.length);
+}
+
+
+*/
+
+
+
+    </script>
+</body>
+</html>
