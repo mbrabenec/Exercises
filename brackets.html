@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+
+//let inp = "{}";
+
+//let inp = "({()})";
+
+//let inp = "(}";
+let inp = "[({})]";
+//let inp = "([(]";
+
+
+
+function check(inp) {
+
+    let inpArr = inp.split("");
+
+    let openBr = [ "(", "{", "[" ];
+    let closeBr = [ ")", "}", "]" ];
+
+    if (inpArr.length % 2 !== 0) return false;
+
+    let count = (inpArr.length/2);
+
+    do {
+        for (let i = 0; i < inpArr.length - 1; i++) {
+            let val = inpArr[i];
+            let index = openBr.indexOf(val);
+            let matchingCloser = closeBr[index];
+
+            if(inpArr[i + 1] === matchingCloser) {
+                toDel =i;
+                inpArr.splice(toDel, 2);
+            }
+        }
+        count--;    
+
+    } while (count > 0);
+
+
+    return (inpArr.length ===0) ? true : false;
+
+}
+
+console.log(check(inp));
+
+
+
+
+
+</script>
+
+</body>
+</html>

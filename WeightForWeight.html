@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let inp = "103    123 4444 99  2000";
+        let inp2 = "10383 187 257334 6 60966 27 46498 54 283811 128 226057 123 453451 46 291769 25 326071 48 187829 5 84";
+
+
+
+
+
+        function orderWeight(strng) {
+
+            let inpArr = strng.trim().split(" ").filter(e => e !== "");
+            
+            let data = inpArr.map(function(e, i) { 
+                if (e.length === 1) {
+                    return [Number(e), inpArr[i]];
+                } else {
+                    return [e.split("").reduce((a, b) => Number(a) + Number(b)), inpArr[i]];
+                }
+            });
+            // need to sort this DATA array
+
+            //temp array of objects with pos and sort values
+
+            var mapped = data.map(function(e, i) {
+                return {index: i, value: e};
+            }); 
+
+            //sort using reduced vals
+
+            mapped.sort(function(a, b) {
+
+                if (a.value[0] === b.value[0]) {
+                    return (a.value[1].localeCompare(b.value[1]));
+                }
+                else return (a.value[0] - b.value[0]);
+
+            });
+
+            var result = mapped.map(e => data[e.index][1]);
+            return result.join(" ");
+
+        }
+
+
+        let a = orderWeight(inp2);
+        console.log(a);
+
+
+
+
+
+    </script>
+</body>
+</html>

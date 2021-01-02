@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+
+
+/*
+let inp = "learn how to code for beginners";
+
+let inpArray = inp.split(" ").map(e => {return e.charAt(0).toUpperCase() + e.slice(1)}).join(" ");
+
+console.log(inpArray);
+*/
+
+/*
+let inp = 'hello world';
+
+let replace = 'l';
+let withNew = 'x';
+
+let inpArr = inp.split("").map(e => {return (e === replace) ? e = withNew : e}).join("");
+
+console.log(inpArr);
+*/
+
+let inp = '        I need trimming  ';
+
+//let output = inp.trim();
+
+let inpArr = inp.split("");
+
+
+
+for (let i = 0; i < inpArr.length; i++) {
+    if (inpArr[i] !== " ") {
+        inpArr.splice(0, i);
+        break;
+    }
+}
+
+for (let j = inpArr.length -1; j >= 0; j--) {
+    if (inpArr[j] !== " ") {
+        inpArr.splice(j+1, inpArr.length - j);
+        break;
+    }
+}
+
+console.log(inpArr.join(""));
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
